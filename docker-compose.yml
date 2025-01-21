@@ -1,0 +1,33 @@
+---
+services:
+  darknet-desktop:
+    image: chrisbensch/docker-darknet-desktop:latest
+    container_name: darknet-desktop
+    hostname: darkdesk-1
+    security_opt:
+      - seccomp:unconfined #optional
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      #- SUBFOLDER=/ #optional
+      - TITLE=Darknet #optional
+    volumes:
+      - ./appdata/data/config:/config
+    #  - /var/run/docker.sock:/var/run/docker.sock #optional
+    #network_mode: host
+    networks:
+      - darkdesk-1_network
+    ports:
+      # Web VNC
+      - 7000:3000
+      - 7001:3001
+      # I2P
+    #devices:
+    #  - /dev/dri:/dev/dri #optional
+    #shm_size: "1gb" #optional
+    restart: unless-stopped
+
+networks:
+  darkdesk-1_network:
+    driver: bridge

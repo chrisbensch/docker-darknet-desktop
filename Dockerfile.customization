@@ -1,0 +1,41 @@
+
+
+# Customizations Begin Here
+RUN apt-get -y remove chromium && \
+    apt-get -y autoremove && \
+    apt-get update && \
+    apt-get -y dist-upgrade && \
+    # required for openjdk to install, hack for now
+    mkdir -p /usr/share/man/man1 && \
+    apt-get -y install wget git tor obfs4proxy nyx expect openjdk-17-jre firefox-esr && \
+    apt-get -y autoclean && \
+    rm -rf /var/lib/apt/lists/*
+
+## Prepare and install RetroShare
+# Always up-to-date gpg key
+RUN wget -qO - "https://build.opensuse.org/projects/network:messaging:xmpp:dino/signing_keys/download?kind=gpg" | gpg --dearmor > /etc/apt/keyrings/retroshare.gpg
+
+# Add correct distro source
+RUN VERSION_ID=$(grep VERSION_ID /etc/os-release | cut -d '"' -f 2) && \
+    echo "deb [signed-by=/etc/apt/keyrings/retroshare.gpg] https://download.opensuse.org/repositories/network:/retroshare/Debian_12/ /" > /etc/apt/sources.list.d/retroshare.list
+
+# Install
+RUN apt-get update && \
+    apt-get -y install retroshare-gui && \
+    apt-get -y autoclean && \
+    rm -rf /var/lib/apt/lists/*
+
+## Prepare and install i2p+
+COPY i2p-install.expect /tmp
+
+RUN cd /tmp && \
+    wget https://i2pplus.github.io/installers/i2pinstall_2.7.0+.exe
+
+RUN expect /tmp/i2p-install.expect && chown -R abc:abc /i2p
+
+# Prepare and install Librewolf
+RUN apt-get -y install extrepo && \
+    extrepo enable librewolf && \
+    apt-get update && \
+    apt-get -y install librewolf
+##################################################################################

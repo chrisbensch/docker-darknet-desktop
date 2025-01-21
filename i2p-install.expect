@@ -1,0 +1,19 @@
+#!/usr/bin/env expect
+
+# spawn the i2pplus installation process
+spawn java -jar /tmp/i2pinstall_2.7.0+.exe -console
+
+# expect the first question and send the answer
+expect "press 1 to continue, 2 to quit, 3 to redisplay"
+send "1\r"
+
+# expect the second question and send the answer
+expect "Select target path*"
+send "/i2p\r"
+
+# expect the third question and send the answer
+expect "press 1 to continue, 2 to quit, 3 to redisplay"
+send "1\r"
+
+# expect the end of the installation process
+expect eof
