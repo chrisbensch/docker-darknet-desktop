@@ -34,8 +34,10 @@ RUN cd /tmp && \
 RUN expect /tmp/i2p-install.expect && chown -R abc:abc /i2p
 
 # Prepare and install Librewolf
-RUN apt-get -y install extrepo && \
+RUN apt-get update && \
+    apt-get -y install extrepo && \
     extrepo enable librewolf && \
     apt-get update && \
-    apt-get -y install librewolf
+    apt-get -y install librewolf && \
+    rm -rf /var/lib/apt/lists/*
 ##################################################################################
