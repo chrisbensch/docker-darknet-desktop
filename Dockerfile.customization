@@ -7,7 +7,7 @@ RUN apt-get -y remove chromium && \
     apt-get -y dist-upgrade && \
     # required for openjdk to install, hack for now
     mkdir -p /usr/share/man/man1 && \
-    apt-get -y install wget git tor obfs4proxy nyx expect openjdk-17-jre firefox-esr && \
+    apt-get -y install wget git tor obfs4proxy nyx expect openjdk-17-jre firefox-esr hexchat && \
     apt-get -y autoclean && \
     rm -rf /var/lib/apt/lists/*
 
