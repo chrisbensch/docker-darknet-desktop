@@ -1,0 +1,136 @@
+{
+  "mode": "disable",
+  "sync": false,
+  "autoBackup": true,
+  "passthrough": "",
+  "theme": "",
+  "container": {
+    "incognito": "",
+    "container-1": "",
+    "container-2": "",
+    "container-3": "",
+    "container-4": ""
+  },
+  "commands": {
+    "setProxy": "",
+    "setTabProxy": "",
+    "quickAdd": ""
+  },
+  "data": [
+    {
+      "active": true,
+      "title": "I2P",
+      "type": "http",
+      "hostname": "127.0.0.1",
+      "port": "4444",
+      "username": "",
+      "password": "",
+      "cc": "",
+      "city": "",
+      "color": "#9141ac",
+      "pac": "",
+      "pacString": "",
+      "proxyDNS": false,
+      "include": [
+        {
+          "type": "regex",
+          "title": "I2P",
+          "pattern": ".*\\.i2p(/.*)?$",
+          "active": true
+        }
+      ],
+      "exclude": []
+    },
+    {
+      "active": true,
+      "title": "TOR",
+      "type": "socks5",
+      "hostname": "127.0.0.1",
+      "port": "9050",
+      "username": "",
+      "password": "",
+      "cc": "",
+      "city": "",
+      "color": "#04e600",
+      "pac": "",
+      "pacString": "",
+      "proxyDNS": true,
+      "include": [
+        {
+          "type": "regex",
+          "title": "Tor",
+          "pattern": ".*\\.onion(/.*)?$",
+          "active": true
+        }
+      ],
+      "exclude": []
+    },
+    {
+      "active": true,
+      "title": "DIRECT",
+      "type": "direct",
+      "hostname": "DIRECT",
+      "port": "1111",
+      "username": "",
+      "password": "",
+      "cc": "",
+      "city": "",
+      "color": "#ffb6c1",
+      "pac": "",
+      "pacString": "",
+      "proxyDNS": true,
+      "include": [
+        {
+          "type": "regex",
+          "title": "127.*.*.*",
+          "pattern": "^(http|https):\\/\\/127\\.0\\.0\\.1(:\\d+)?\\/?",
+          "active": true
+        }
+      ],
+      "exclude": []
+    },
+    {
+      "active": true,
+      "title": "Default",
+      "type": "socks5",
+      "hostname": "127.0.0.1",
+      "port": "9050",
+      "username": "",
+      "password": "",
+      "cc": "",
+      "city": "",
+      "color": "#e6001b",
+      "pac": "",
+      "pacString": "",
+      "proxyDNS": true,
+      "include": [
+        {
+          "type": "wildcard",
+          "title": "All Else",
+          "pattern": "://*",
+          "active": true
+        }
+      ],
+      "exclude": [
+        {
+          "type": "wildcard",
+          "title": "Not TOR",
+          "pattern": "*.onion",
+          "active": true
+        },
+        {
+          "type": "wildcard",
+          "title": "Not I2P",
+          "pattern": "*.i2p",
+          "active": true
+        },
+        {
+          "type": "wildcard",
+          "title": "Localhost",
+          "pattern": "localhost",
+          "active": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+DataDirectory /config/tor/
+SocksPort 127.0.0.1:9050
+
+ControlPort 9051
+CookieAuthentication 1
+
+UseBridges 0
+
+ClientTransportPlugin obfs4 exec /usr/bin/obfs4proxy
+
+Bridge obfs4 75.127.13.11:7772 D4A0E8782CA745C6E8239D051451671C19A40587 cert=k/HNHNgo0KRJjOvLrlY7HCymKA/Edc3s9JMjVLax7hfazstJKSQEbBrqpFUu+wn03Nxdcg iat-mode=0
+Bridge obfs4 45.11.183.226:4111 CF41582118B7D06070975A04DB42AF132F908684 cert=lP8casP29EpsdewfKWt07DRwdsZVR9wgk9defJbtFokPqJ9EdSFCv8KMFkCvkaCSXbP6QA iat-mode=0
+Bridge obfs4 [2a11:840:17:1b::b724:6a22]:993 978180445CF4B1748DBD2FEE550F93BE8C117AF9 cert=bfZhNvbOb4XNnpY7htuwQv5Folg6uNmQzT7OQIwN5H9QeRHVjMPPjhk+VvPL5b+xb5A3GQ iat-mode=0
+Bridge obfs4 [2607:f1c0:f01e:8f00::1]:443 DA542BE4F55B48CF8272535F4FD3D61AE17D8C0A cert=dQzb5lElFNll6sl6XHKxXIsCauyIg5z9yTeagvRTdEooqlLOnppmZYcYnavAoU9+QN+3fQ iat-mode=0
